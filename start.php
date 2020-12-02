@@ -22,9 +22,19 @@ try {
 <html>
     <head>
         <title>PHP MySQL Query Data Demo</title>
+
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <div id="container">
+        <div class="sidenav">
+            <h5 class="title">Restaurant Management System</h5>
+            <hr>
+            <a href="/">Dashboard</a>
+            <a href="/reports.php">Reports</a>
+            <a>Logout</a>
+        </div>
+
+        <div class="main">
             <h2>Current List of users</h2>
             <table border=1 cellspacing=5 cellpadding=5>
                 <thead>
