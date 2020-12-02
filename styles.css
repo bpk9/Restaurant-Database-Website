@@ -35,7 +35,8 @@
   
   /* When you mouse over the navigation links, change their color */
   .sidenav a:hover {
-    color: grey;
+    color: darkblue;
+    cursor: pointer;
   }
   
   /* Style page content */
