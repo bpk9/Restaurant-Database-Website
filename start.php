@@ -21,11 +21,13 @@ try {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PHP MySQL Query Data Demo</title>
+        <title>Restaurant Management System</title>
 
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+
+        <!-- Sidenav -->
         <div class="sidenav">
             <h5 class="title">Restaurant Management System</h5>
             <hr>
@@ -34,39 +36,53 @@ try {
             <a>Logout</a>
         </div>
 
+        <!-- Main Content -->
         <div class="main">
-            <h2>Current List of users</h2>
-            <table border=1 cellspacing=5 cellpadding=5>
-                <thead>
-                    <tr>
-                        <th>Last name</th>
-                        <th>First name</th>
-                        <th>Login ID</th>
-                        <th>Delete?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($row = $q->fetch()): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($row['lname']) ?></td>
-                            <td><?php echo htmlspecialchars($row['fname']); ?></td>
-                            <td><?php echo htmlspecialchars($row['loginid']); ?></td>
-                            <td><?php echo '<form action="/delete.php" method="post"><input type="submit" value="DELETE"><input type="hidden" name="loginid" value="' . htmlspecialchars($row['loginid']) . '"></form>'; ?></td>
-                        </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-		<br><h2>Insert a new user:</h2>
-		<form action="/insert.php" method="post">
-			<table>
-				<tr><td>First name:</td><td><input type="text" id="fname" name="fname" value="?"></td></tr>
-				<tr><td>Last name:</td><td><input type="text" id="lname" name="lname" value="?"></td></tr>
-				<tr><td>Login ID:</td><td><input type="text" id="loginid" name="loginid" value="?"></td></tr>
-			</table>
-			<input type="submit" value="INSERT">
-		</form>
-		<br>
-		<br><br><br>
+
+            <div class="card-row">
+                <!-- Restaurants Card -->
+                <div class="card">
+                    <img src="https://www.flaticon.com/svg/static/icons/svg/685/685352.svg">
+                    <div class="container">
+                        <h4><b>Restaurants</b></h4>
+                    </div>
+                </div>
+
+                <!-- Customers Card -->
+                <div class="card">
+                    <img src="https://www.flaticon.com/svg/static/icons/svg/1040/1040005.svg">
+                    <div class="container">
+                        <h4><b>Customers</b></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-row">
+                <!-- Menu Card -->
+                <div class="card">
+                    <img src="https://www.flaticon.com/svg/static/icons/svg/3522/3522187.svg">
+                    <div class="container">
+                        <h4><b>Menu</b></h4>
+                    </div>
+                </div>
+
+                <!-- Orders Card -->
+                <div class="card">
+                    <img src="https://www.flaticon.com/svg/static/icons/svg/1147/1147847.svg">
+                    <div class="container">
+                        <h4><b>Orders</b></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-row">
+                <!-- Employees Card -->
+                <div class="card">
+                    <img src="https://www.flaticon.com/svg/static/icons/svg/912/912318.svg">
+                    <div class="container">
+                        <h4><b>Employees</b></h4>
+                    </div>
+                </div>
+            </div>
     </body>
-</div>
 </html>
