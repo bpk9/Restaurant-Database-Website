@@ -4,10 +4,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$username = 'abc123';
-$password = 'YOUR PASSWORD HERE';
+$username = 'website';
+$password = 'password123';
 $host = 'localhost';
-$dbname = 'YOUR DATABASE NAME HERE';
+$dbname = 'restaurants';
 
 ?>
 <!DOCTYPE html>
