@@ -1,5 +1,5 @@
 # Restaurant-Database-Website
 
 ## Deployment
-- Use deploy.bash to copy all .php files to server (MacOS only)
+- Run deploy.bash to copy all .php files in current directory to server (MacOS only)
 - Make sure to change username!
