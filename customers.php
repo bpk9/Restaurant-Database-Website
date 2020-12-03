@@ -18,16 +18,14 @@
         <!-- Main Content -->
         <div class="main">
 
+            <!-- Title -->
             <h2>Customers</h2>
 
             <!-- Search Bar -->
-            <div class="search-container">
-                <form action="/action_page.php">
+            <div class="search-container" id="customer-search-container">
+                <form action="/search_customer.php">
                     <select name="search_type" id="search_type">
-                        <option value="Name">Name</option>
-                        <option value="Type">Type</option>
-                        <option value="Address">Address</option>
-                        <option value="Phone Number">Phone Number</option>
+                        <option value="restaurantid">Restaurant ID</option>
                     </select>
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="fa fa-search"></i></button>
@@ -40,56 +38,60 @@
                     <tr>
                         <th>id</th>
                         <th>Name</th>
-                        <th>Type</th>
                         <th>Address</th>
-                        <th>Phone Number</th>
-                        <th>Remove</th>
+                        <th class="remove-row">Remove</th>
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>McDonald's</td>
-                        <td>Fast Food</td>
+                        <td>Brian Kasper</td>
                         <td>123 Street Drive, Faketown PA 12345</td>
-                        <td>123-456-7890</td>
-                        <td class="remove-row"><i class="fa fa-trash"></i></td>
+                        <td class="remove-row"><?php echo '<form action="/delete_customer.php" method="post"><button type="submit"><i class="fa fa-trash"></i></button><input type="hidden" name="restaurantid" value="' . htmlspecialchars($row['customerid']) . '"></form>'; ?></td>
                     </tr>
                 </table>
             </div>
 
             <!-- add to db -->
             <div class="add-to-db">
-                <form action="/action_page.php">
+                <form action="/insert_customer.php">
                     <table>
                         <tr>
                             <td>
-                                Name:
+                                First Name:
                             </td>
                             <td>
-                                <input type="text" name="Name">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Type:
-                            </td>
-                            <td>
-                                <input type="text" name="Type">
+                                <input type="text" name="fname">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Address:
+                                Middle Name:
                             </td>
                             <td>
-                                <input type="text" name="Address">
+                                <input type="text" name="mname">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Phone Number:
+                                Last Name:
                             </td>
                             <td>
-                                <input type="text" name="Phone">
+                                <input type="text" name="lname">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Street:
+                            </td>
+                            <td>
+                                <input type="text" name="street">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Zipcode:
+                            </td>
+                            <td>
+                                <input type="text" name="zipcode">
                             </td>
                         </tr>
                     </table>

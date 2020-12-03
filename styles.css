@@ -91,6 +91,10 @@
     border-color: #2793ff;
   }
 
+  #customer-search-container input[type=text] {
+    width: 515px;
+  }
+
   #order-search-container input[type=text] {
     width: 525px;
   }
@@ -120,6 +124,7 @@
   }
 
   .data-table table td, .data-table table th {
+    text-align: left;
     padding: 8px;
   }
 
@@ -128,7 +133,6 @@
   .data-table table th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
     background-color: #2793ff;
     color: white;
   }
@@ -159,6 +163,7 @@
   }
 
   .add-to-db table {
+    text-align: left;
     margin: auto;
   }
 
