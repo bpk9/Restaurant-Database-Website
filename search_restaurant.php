@@ -43,7 +43,7 @@ try {
         <div class="main">
 
             <!-- Title -->
-            <h2>Restaurants</h2>
+            <?php echo "<h2>Restaurants matching \"" . $search_query . "\"</h2>" ; ?>
 
             <!-- Search Bar -->
             <div class="search-container">
