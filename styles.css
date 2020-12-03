@@ -35,7 +35,7 @@
   
   /* main page content */
   .main {
-    width: 600px;
+    width: 700px;
     margin-left: 250px; /* Same as the width of the sidebar */
     padding: 0px 10px;
   }
@@ -47,7 +47,6 @@
 
   .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
     width: 250px;
     background-color: #2793ff;
     text-align: center;
@@ -72,6 +71,10 @@
   }
 
   /* search */
+  .search-container {
+    margin: 10px 0;
+  }
+
   .search-container select {
     padding: 7px;
     padding-top: 8px;
@@ -84,7 +87,7 @@
     padding: 6px;
     margin-top: 8px;
     font-size: 17px;
-    width: 410px;
+    width: 510px;
     border-color: #2793ff;
   }
 
@@ -99,25 +102,17 @@
     cursor: pointer;
   }
 
-  /* add delete buttons */
-  .add-delete-buttons {
-    width: 600px;
-    text-align: right;
-  }
-
-  .add-delete-buttons button {
-    background-color: #2793ff;
+  .search-container button:hover {
+    background-color: #104565;
+    border-color: #104565;
     color: white;
-    border: none;
-    margin: 10px;
-    padding: 10px;
   }
 
   /* data table */
   .data-table table {
     border-spacing: 0;
     border-collapse: collapse;
-    width: 590px;
+    width: 690px;
   }
 
   .data-table table td, .data-table table th {
@@ -126,12 +121,55 @@
 
   .data-table table tr:nth-child(even){background-color: #f2f2f2;}
 
-  .data-table table tr:hover {background-color: #ddd;}
-
   .data-table table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color: #2793ff;
     color: white;
+  }
+
+  .data-table .remove-row {
+    text-align: center;
+  }
+
+  /* add to db */
+  .add-to-db {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    border: 1px solid #2793ff;
+  }
+
+  .add-to-db form {
+    padding: 10px;
+  }
+
+  .add-to-db table {
+    margin: auto;
+  }
+
+  .add-to-db button {
+    background-color: #2793ff;
+    color: white;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .add-to-db button:hover {
+    background-color: #104565;
+  }
+
+  .add-to-db input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    width: 100%;
+    border-color: #2793ff;
+  }
+
+  /* icons */
+  .fa-trash {
+    color: red;
+    margin-right: 2px;
   }

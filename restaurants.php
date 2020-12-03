@@ -56,12 +56,6 @@ try {
                 </form>
             </div>
 
-            <!-- add and delete buttons -->
-            <div class="add-delete-buttons">
-                <button>Add Restaurant</button>
-                <button>Delete Restaurant</button>
-            </div>
-
             <!-- Data Table -->
             <div class="data-table">
                 <table>
@@ -71,6 +65,7 @@ try {
                         <th>Type</th>
                         <th>Address</th>
                         <th>Phone Number</th>
+                        <th>Remove</th>
                     </tr>
                     <tr>
                         <td>1</td>
@@ -78,8 +73,51 @@ try {
                         <td>Fast Food</td>
                         <td>123 Street Drive, Faketown PA 12345</td>
                         <td>123-456-7890</td>
+                        <td class="remove-row"><i class="fa fa-trash"></i></td>
                     </tr>
                 </table>
+            </div>
+
+            <!-- add to db -->
+            <div class="add-to-db">
+                <form action="/action_page.php">
+                    <table>
+                        <tr>
+                            <td>
+                                Name:
+                            </td>
+                            <td>
+                                <input type="text" name="Name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Type:
+                            </td>
+                            <td>
+                                <input type="text" name="Type">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Address:
+                            </td>
+                            <td>
+                                <input type="text" name="Address">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Phone Number:
+                            </td>
+                            <td>
+                                <input type="text" name="Phone">
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <button>Add Restaurant</button>
+                </form>
             </div>
         </div>
     </body>
