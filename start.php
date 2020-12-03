@@ -32,8 +32,6 @@ try {
             <h5 class="title">Restaurant Management System</h5>
             <hr>
             <a href="/start.php">Dashboard</a>
-            <a>Reports</a>
-            <a>Logout</a>
         </div>
 
         <!-- Main Content -->
@@ -62,7 +60,7 @@ try {
                 <div class="card" onclick="location.href='/menu.php';">
                     <img src="https://www.flaticon.com/svg/static/icons/svg/3522/3522187.svg">
                     <div class="container">
-                        <h4><b>Menu</b></h4>
+                        <h4><b>Menu Items</b></h4>
                     </div>
                 </div>
 
