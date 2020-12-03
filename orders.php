@@ -1,23 +1,3 @@
-<?php
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-$username = 'website';
-$password = 'password123';
-$host = 'localhost';
-$dbname = 'restaurants';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $sql = 'SELECT lname, fname, loginid FROM users';
-    $q = $pdo->query($sql);
-    $q->setFetchMode(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Could not connect to the database $dbname :" . $e->getMessage());
-}
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,15 +21,12 @@ try {
             <h2>Orders</h2>
 
             <!-- Search Bar -->
-            <div class="search-container">
-                <form action="/action_page.php">
-                    <select name="search_type" id="search_type">
-                        <option value="Name">Name</option>
-                        <option value="Type">Type</option>
-                        <option value="Address">Address</option>
-                        <option value="Phone Number">Phone Number</option>
+            <div class="search-container" id="order-search-container">
+                <form action="/search_order.php" method="post">
+                    <select name="search_type">
+                        <option value="customerid">Customer ID</option>
                     </select>
-                    <input type="text" placeholder="Search.." name="search">
+                    <input type="text" placeholder="Search.." name="search_query">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>

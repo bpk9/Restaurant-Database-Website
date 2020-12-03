@@ -91,6 +91,10 @@
     border-color: #2793ff;
   }
 
+  #order-search-container input[type=text] {
+    width: 525px;
+  }
+
   .search-container button {
     padding: 6px 10px;
     margin-top: 8px;
