@@ -87,7 +87,7 @@
     padding: 6px;
     margin-top: 8px;
     font-size: 17px;
-    width: 510px;
+    width: 565px;
     border-color: #2793ff;
   }
 
@@ -100,12 +100,12 @@
     border-left: none;
     margin-left: -5px;
     cursor: pointer;
+    color: white;
   }
 
   .search-container button:hover {
     background-color: #104565;
     border-color: #104565;
-    color: white;
   }
 
   /* data table */
@@ -131,6 +131,15 @@
 
   .data-table .remove-row {
     text-align: center;
+  }
+
+  .data-table button {
+    border: none;
+    background-color: inherit;
+  }
+
+  .data-table button:hover {
+    cursor: pointer;
   }
 
   /* add to db */
@@ -159,6 +168,7 @@
 
   .add-to-db button:hover {
     background-color: #104565;
+    cursor: pointer;
   }
 
   .add-to-db input[type=text] {

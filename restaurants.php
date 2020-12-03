@@ -11,7 +11,7 @@ $dbname = 'restaurants';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $sql = 'SELECT lname, fname, loginid FROM users';
+    $sql = "SELECT * FROM Restaurants";
     $q = $pdo->query($sql);
     $q->setFetchMode(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -38,18 +38,17 @@ try {
         <!-- Main Content -->
         <div class="main">
 
+            <!-- Title -->
             <h2>Restaurants</h2>
 
             <!-- Search Bar -->
             <div class="search-container">
-                <form action="/action_page.php">
-                    <select name="search_type" id="search_type">
-                        <option value="Name">Name</option>
-                        <option value="Type">Type</option>
-                        <option value="Address">Address</option>
-                        <option value="Phone Number">Phone Number</option>
+                <form action="/search_restaurant.php" method="post">
+                    <select name="search_type">
+                        <option value="rname">Name</option>
+                        <option value="rtype">Type</option>
                     </select>
-                    <input type="text" placeholder="Search.." name="search">
+                    <input type="text" placeholder="Search.." name="search_query">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
@@ -61,31 +60,35 @@ try {
                         <th>id</th>
                         <th>Name</th>
                         <th>Type</th>
-                        <th>Address</th>
+                        <th>Street</th>
+                        <th>Zipcode</th>
                         <th>Phone Number</th>
-                        <th>Remove</th>
+                        <th class="remove-row">Remove</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>McDonald's</td>
-                        <td>Fast Food</td>
-                        <td>123 Street Drive, Faketown PA 12345</td>
-                        <td>123-456-7890</td>
-                        <td class="remove-row"><i class="fa fa-trash"></i></td>
-                    </tr>
+                    <?php while ($row = $q->fetch()): ?>
+                        <tr>
+                            <td><?php echo html_entity_decode($row['restaurantid']) ?></td>
+                            <td><?php echo html_entity_decode($row['rname']); ?></td>
+                            <td><?php echo html_entity_decode($row['rtype']); ?></td>
+                            <td><?php echo html_entity_decode($row['street']); ?></td>
+                            <td><?php echo html_entity_decode($row['zipcode']); ?></td>
+                            <td><?php echo html_entity_decode($row['phone_number']); ?></td>
+                            <td class="remove-row"><?php echo '<form action="/delete_restaurant.php" method="post"><button type="submit"><i class="fa fa-trash"></i></button><input type="hidden" name="restaurantid" value="' . htmlspecialchars($row['restaurantid']) . '"><input type="hidden" name="rname" value="' . htmlspecialchars($row['rname']) . '"></form>'; ?></td>
+                        </tr>
+                    <?php endwhile; ?>
                 </table>
             </div>
 
             <!-- add to db -->
             <div class="add-to-db">
-                <form action="/action_page.php">
+                <form action="/insert_restaurant.php" method="post">
                     <table>
                         <tr>
                             <td>
                                 Name:
                             </td>
                             <td>
-                                <input type="text" name="Name">
+                                <input type="text" name="rname">
                             </td>
                         </tr>
                         <tr>
@@ -93,15 +96,23 @@ try {
                                 Type:
                             </td>
                             <td>
-                                <input type="text" name="Type">
+                                <input type="text" name="rtype">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Address:
+                                Street:
                             </td>
                             <td>
-                                <input type="text" name="Address">
+                                <input type="text" name="street">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Zipcode:
+                            </td>
+                            <td>
+                                <input type="text" name="zipcode">
                             </td>
                         </tr>
                         <tr>
@@ -109,7 +120,7 @@ try {
                                 Phone Number:
                             </td>
                             <td>
-                                <input type="text" name="Phone">
+                                <input type="text" name="phone_number">
                             </td>
                         </tr>
                     </table>
