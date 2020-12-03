@@ -35,6 +35,7 @@
   
   /* main page content */
   .main {
+    width: 600px;
     margin-left: 250px; /* Same as the width of the sidebar */
     padding: 0px 10px;
   }
@@ -47,14 +48,15 @@
   .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 300px;
+    width: 250px;
     background-color: #2793ff;
     text-align: center;
     margin: 25px;
   }
 
   .card img {
-    width: 50%;
+    width: 125px;
+    height: 125px;
     padding: 20px;
   }
   
@@ -67,4 +69,69 @@
     background-color: black;
     color: white;
     padding: 5px;
+  }
+
+  /* search */
+  .search-container select {
+    padding: 7px;
+    padding-top: 8px;
+    border-color: #2793ff;
+    border: 2px solid #2793ff;
+    margin-right: -5px;
+  }
+
+  .search-container input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    width: 410px;
+    border-color: #2793ff;
+  }
+
+  .search-container button {
+    padding: 6px 10px;
+    margin-top: 8px;
+    background: #2793ff;
+    font-size: 17px;
+    border-color: #2793ff;
+    border-left: none;
+    margin-left: -5px;
+    cursor: pointer;
+  }
+
+  /* add delete buttons */
+  .add-delete-buttons {
+    width: 600px;
+    text-align: right;
+  }
+
+  .add-delete-buttons button {
+    background-color: #2793ff;
+    color: white;
+    border: none;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  /* data table */
+  .data-table table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 590px;
+  }
+
+  .data-table table td, .data-table table th {
+    padding: 8px;
+  }
+
+  .data-table table tr:nth-child(even){background-color: #f2f2f2;}
+
+  .data-table table tr:hover {background-color: #ddd;}
+
+  .data-table table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2793ff;
+    color: white;
   }

@@ -21,7 +21,7 @@ try {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Restaurant Management System</title>
+        <title>RMS | Dashboard</title>
 
         <link rel="stylesheet" href="styles.css">
     </head>
@@ -31,7 +31,7 @@ try {
         <div class="sidenav">
             <h5 class="title">Restaurant Management System</h5>
             <hr>
-            <a href="/">Dashboard</a>
+            <a href="/start.php">Dashboard</a>
             <a href="/reports.php">Reports</a>
             <a>Logout</a>
         </div>
@@ -41,7 +41,7 @@ try {
 
             <div class="card-row">
                 <!-- Restaurants Card -->
-                <div class="card">
+                <div class="card" onclick="location.href='/restaurants.php';">
                     <img src="https://www.flaticon.com/svg/static/icons/svg/685/685352.svg">
                     <div class="container">
                         <h4><b>Restaurants</b></h4>
@@ -84,5 +84,6 @@ try {
                     </div>
                 </div>
             </div>
+        </div>
     </body>
 </html>
