@@ -33,8 +33,6 @@ try {
             <h5 class="title">Restaurant Management System</h5>
             <hr>
             <a href="/start.php">Dashboard</a>
-            <a href="/reports.php">Reports</a>
-            <a>Logout</a>
         </div>
 
         <!-- Main Content -->
