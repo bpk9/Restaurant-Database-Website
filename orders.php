@@ -35,20 +35,24 @@
             <div class="data-table">
                 <table>
                     <tr>
-                        <th>id</th>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Address</th>
-                        <th>Phone Number</th>
-                        <th>Remove</th>
+                        <th>ID</th>
+                        <th class="id-row">Customer ID</th>
+                        <th class="id-row">Restaurant ID</th>
+                        <th>Street</th>
+                        <th>Zipcode</th>
+                        <th>Order Status</th>
+                        <th class="complete-row">Mark as Complete</th>
+                        <th class="remove-row">Delete Order</th>
                     </tr>
                     <tr>
                         <td>1</td>
+                        <td class="id-row">2</td>
+                        <td class="id-row">3</td>
                         <td>McDonald's</td>
                         <td>Fast Food</td>
                         <td>123 Street Drive, Faketown PA 12345</td>
-                        <td>123-456-7890</td>
-                        <td class="remove-row"><i class="fa fa-trash"></i></td>
+                        <td class="complete-row"><?php echo '<form action="/set_order_as_complete.php" method="post"><button type="submit"><i class="fa fa-check-square"></i></button><input type="hidden" name="itemid" value="' . htmlspecialchars($row['itemid']) . '"></form>'; ?></td>
+                        <td class="remove-row"><?php echo '<form action="/delete_order.php" method="post"><button type="submit"><i class="fa fa-trash"></i></button><input type="hidden" name="orderid" value="' . htmlspecialchars($row['orderid']) . '"></form>'; ?></td>
                     </tr>
                 </table>
             </div>

@@ -139,8 +139,13 @@
   }
 
   .data-table .remove-row,
+  .data-table .complete-row,
   .data-table .id-row {
     text-align: center;
+  }
+
+  .data-table .complete-row i::before {
+    color: green;
   }
 
   .data-table button {
