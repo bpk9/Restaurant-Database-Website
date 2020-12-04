@@ -1,3 +1,23 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$username = 'website';
+$password = 'password123';
+$host = 'localhost';
+$dbname = 'restaurants';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $sql = "SELECT * FROM Menu_item";
+    $q = $pdo->query($sql);
+    $q->setFetchMode(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Could not connect to the database $dbname :" . $e->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,20 +63,22 @@
                         <th>Active</th>
                         <th class="remove-row">Remove</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td class="id-row">2</td>
-                        <td>Cheese Burger</td>
-                        <td>$2.00</td>
-                        <td>YES</td>
-                        <td class="remove-row"><?php echo '<form action="/delete_menu.php" method="post"><button type="submit"><i class="fa fa-trash"></i></button><input type="hidden" name="itemid" value="' . htmlspecialchars($row['itemid']) . '"></form>'; ?></td>
-                    </tr>
+                    <?php while ($row = $q->fetch()): ?>
+                        <tr>
+                            <td><?php echo html_entity_decode($row['itemid']); ?></td>
+                            <td class="id-row"><?php echo html_entity_decode($row['restaurantid']) ?></td>
+                            <td><?php echo html_entity_decode($row['name']); ?></td>
+                            <td><?php echo "$" . html_entity_decode($row['unitprice']); ?></td>
+                            <td><?php echo (html_entity_decode($row['active'])) ? "YES" : "NO"; ?></td>
+                            <td class="remove-row"><?php echo '<form action="/delete_menu.php" method="post"><button type="submit"><i class="fa fa-trash"></i></button><input type="hidden" name="itemid" value="' . htmlspecialchars($row['itemid']) . '"></form>'; ?></td>
+                        </tr>
+                    <?php endwhile; ?>
                 </table>
             </div>
 
             <!-- add to db -->
             <div class="add-to-db">
-                <form action="/insert_menu.php">
+                <form action="/insert_menu.php" method="post">
                     <table>
                         <tr>
                             <td>

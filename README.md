@@ -5,5 +5,5 @@
 - Make sure to change username!
 
 ## Deployment
-- Run deploy.bash to copy all files in current directory to server html folder (MacOS/Linux only)
+- Run deploy.bash to copy all php and css files in current directory to server html folder (MacOS/Linux only)
 - Make sure to change username!
