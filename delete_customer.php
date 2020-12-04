@@ -18,7 +18,7 @@ $dbname = 'restaurants';
     <body>
 		<p>
 			<?php 
-				echo "Deleting Customer: " . $_POST["fname"] . " " . $_POST["mname"] . " " . $_POST["lname"] . "..."; 
+				echo "Deleting Customer with ID: " . $_POST["customerid"] . " ...";
 				$sql = 'DELETE FROM Customers WHERE customerid = "' . $_POST["customerid"] . '"';
 				try {
 					$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

@@ -1,3 +1,23 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$username = 'website';
+$password = 'password123';
+$host = 'localhost';
+$dbname = 'restaurants';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $sql = "SELECT * FROM Customers";
+    $q = $pdo->query($sql);
+    $q->setFetchMode(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Could not connect to the database $dbname :" . $e->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,21 +58,25 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Address</th>
+                        <th>Street</th>
+                        <th>Zipcode</th>
                         <th class="remove-row">Remove</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Brian Kasper</td>
-                        <td>123 Street Drive, Faketown PA 12345</td>
-                        <td class="remove-row"><?php echo '<form action="/delete_customer.php" method="post"><button type="submit"><i class="fa fa-trash"></i></button><input type="hidden" name="restaurantid" value="' . htmlspecialchars($row['customerid']) . '"></form>'; ?></td>
-                    </tr>
+                    <?php while ($row = $q->fetch()): ?>
+                        <tr>
+                            <td><?php echo html_entity_decode($row['customerid']) ?></td>
+                            <td><?php echo html_entity_decode($row['fname']) . " " . html_entity_decode($row['mname']) . " " . html_entity_decode($row['lname']); ?></td>
+                            <td><?php echo html_entity_decode($row['street']); ?></td>
+                            <td><?php echo html_entity_decode($row['zipcode']); ?></td>
+                            <td class="remove-row"><?php echo '<form action="/delete_customer.php" method="post"><button type="submit"><i class="fa fa-trash"></i></button><input type="hidden" name="customerid" value="' . htmlspecialchars($row['customerid']) . '"></form>'; ?></td>
+                        </tr>
+                    <?php endwhile; ?>
                 </table>
             </div>
 
             <!-- add to db -->
             <div class="add-to-db">
-                <form action="/insert_customer.php">
+                <form action="/insert_customer.php" method="post">
                     <table>
                         <tr>
                             <td>

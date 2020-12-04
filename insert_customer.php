@@ -18,9 +18,9 @@ $dbname = 'restaurants';
     <body>
 		<p>
 			<?php 
-				echo "Inserting new customer: " . $_POST["fname"] . " " . $_POST["mname"] . " " . $_POST["lname"] . " " . $_POST["zipcode"] . " " . $_POST["phone_number"] . "..."; 
-				$sql = 'INSERT INTO Customers (fname, mname, lname, zipcode, phone_number) ';
-				$sql = $sql . 'VALUES ("'. htmlentities($_POST["rname"], ENT_QUOTES) . '","' . htmlentities($_POST["rtype"], ENT_QUOTES) . '","' . htmlentities($_POST["street"], ENT_QUOTES) . '","' . htmlentities($_POST["zipcode"], ENT_QUOTES) . '","' . htmlentities($_POST["phone_number"], ENT_QUOTES) . '")';
+				echo "Inserting new customer: " . $_POST["fname"] . " " . $_POST["mname"] . " " . $_POST["lname"] . " " . $_POST["street"] . " " . $_POST["zipcode"] . " ...";
+				$sql = 'INSERT INTO Customers (fname, mname, lname, street, zipcode) ';
+				$sql = $sql . 'VALUES ("'. htmlentities($_POST["fname"], ENT_QUOTES) . '","' . htmlentities($_POST["mname"], ENT_QUOTES) . '","' . htmlentities($_POST["lname"], ENT_QUOTES) . '","' . htmlentities($_POST["street"], ENT_QUOTES) . '","' . htmlentities($_POST["zipcode"], ENT_QUOTES) . '")';
 				try {
 					$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 					$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -30,7 +30,7 @@ $dbname = 'restaurants';
 				<p>You will be redirected in 3 seconds</p>
 				<script>
 					var timer = setTimeout(function() {
-						window.location='restaurants.php'
+						window.location='customers.php'
 					}, 3000);
 				</script>
 			<?php
