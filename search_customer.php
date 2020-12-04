@@ -19,7 +19,7 @@
         <div class="main">
 
             <!-- Title -->
-            <?php echo "<h2>Customers matching \"" . $search_query . "\"</h2>" ; ?>
+            <?php echo "<h2>Customers with Restaurant ID matching \"" . $search_query . "\"</h2>" ; ?>
 
             <!-- Search Bar -->
             <div class="search-container" id="customer-search-container">
