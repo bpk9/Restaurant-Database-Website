@@ -57,7 +57,7 @@ try {
             <div class="data-table">
                 <table>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Type</th>
                         <th>Street</th>

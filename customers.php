@@ -36,7 +36,7 @@
             <div class="data-table">
                 <table>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Address</th>
                         <th class="remove-row">Remove</th>

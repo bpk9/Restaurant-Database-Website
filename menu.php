@@ -36,7 +36,7 @@
             <div class="data-table">
                 <table>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th class="id-row">Restaurant ID</th>
                         <th>Name</th>
                         <th>Unit Price</th>
