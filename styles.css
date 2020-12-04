@@ -84,14 +84,15 @@
   }
 
   .search-container input[type=text] {
+    border: 2px solid #2793ff;
     padding: 6px;
     margin-top: 8px;
     font-size: 17px;
     width: 565px;
-    border-color: #2793ff;
   }
 
-  #customer-search-container input[type=text] {
+  #customer-search-container input[type=text],
+  #menu-item-search-container input[type=text] {
     width: 515px;
   }
 
@@ -137,7 +138,8 @@
     color: white;
   }
 
-  .data-table .remove-row {
+  .data-table .remove-row,
+  .data-table .id-row {
     text-align: center;
   }
 
@@ -184,7 +186,13 @@
     padding: 6px;
     margin-top: 8px;
     width: 100%;
-    border-color: #2793ff;
+    border: 2px solid #2793ff;
+  }
+
+  .add-to-db select {
+    padding: 6px;
+    margin-top: 8px;
+    border: 2px solid #2793ff;
   }
 
   /* icons */

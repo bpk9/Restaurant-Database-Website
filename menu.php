@@ -18,16 +18,14 @@
         <!-- Main Content -->
         <div class="main">
 
+            <!-- Title -->
             <h2>Menu Items</h2>
 
             <!-- Search Bar -->
-            <div class="search-container">
-                <form action="/action_page.php">
+            <div class="search-container" id="menu-item-search-container">
+                <form action="/search_menu.php">
                     <select name="search_type" id="search_type">
-                        <option value="Name">Name</option>
-                        <option value="Type">Type</option>
-                        <option value="Address">Address</option>
-                        <option value="Phone Number">Phone Number</option>
+                        <option value="restaurantid">Restaurant ID</option>
                     </select>
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="fa fa-search"></i></button>
@@ -39,57 +37,60 @@
                 <table>
                     <tr>
                         <th>id</th>
+                        <th class="id-row">Restaurant ID</th>
                         <th>Name</th>
-                        <th>Type</th>
-                        <th>Address</th>
-                        <th>Phone Number</th>
-                        <th>Remove</th>
+                        <th>Unit Price</th>
+                        <th>Active</th>
+                        <th class="remove-row">Remove</th>
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>McDonald's</td>
-                        <td>Fast Food</td>
-                        <td>123 Street Drive, Faketown PA 12345</td>
-                        <td>123-456-7890</td>
-                        <td class="remove-row"><i class="fa fa-trash"></i></td>
+                        <td class="id-row">2</td>
+                        <td>Cheese Burger</td>
+                        <td>$2.00</td>
+                        <td>YES</td>
+                        <td class="remove-row"><?php echo '<form action="/delete_menu.php" method="post"><button type="submit"><i class="fa fa-trash"></i></button><input type="hidden" name="itemid" value="' . htmlspecialchars($row['itemid']) . '"></form>'; ?></td>
                     </tr>
                 </table>
             </div>
 
             <!-- add to db -->
             <div class="add-to-db">
-                <form action="/action_page.php">
+                <form action="/insert_menu.php">
                     <table>
+                        <tr>
+                            <td>
+                                Restaurant ID:
+                            </td>
+                            <td>
+                                <input type="text" name="restaurantid">
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 Name:
                             </td>
                             <td>
-                                <input type="text" name="Name">
+                                <input type="text" name="name">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Type:
+                                Unit Price:
                             </td>
                             <td>
-                                <input type="text" name="Type">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Address:
-                            </td>
-                            <td>
-                                <input type="text" name="Address">
+                                <input type="text" name="unitprice">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Phone Number:
+                                Active:
                             </td>
                             <td>
-                                <input type="text" name="Phone">
+                                <select name="active">
+                                    <option value="1">YES</option>
+                                    <option value="0">NO</option>
+                                </select>
                             </td>
                         </tr>
                     </table>
