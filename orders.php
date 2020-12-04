@@ -1,3 +1,23 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$username = 'website';
+$password = 'password123';
+$host = 'localhost';
+$dbname = 'restaurants';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $sql = "SELECT * FROM Orders";
+    $q = $pdo->query($sql);
+    $q->setFetchMode(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Could not connect to the database $dbname :" . $e->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,49 +60,61 @@
                         <th class="id-row">Restaurant ID</th>
                         <th>Street</th>
                         <th>Zipcode</th>
+                        <th>Phone Number</th>
                         <th>Order Status</th>
                         <th class="complete-row">Mark as Complete</th>
                         <th class="remove-row">Delete Order</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td class="id-row">2</td>
-                        <td class="id-row">3</td>
-                        <td>McDonald's</td>
-                        <td>Fast Food</td>
-                        <td>123 Street Drive, Faketown PA 12345</td>
-                        <td class="complete-row"><?php echo '<form action="/set_order_as_complete.php" method="post"><button type="submit"><i class="fa fa-check-square"></i></button><input type="hidden" name="itemid" value="' . htmlspecialchars($row['itemid']) . '"></form>'; ?></td>
-                        <td class="remove-row"><?php echo '<form action="/delete_order.php" method="post"><button type="submit"><i class="fa fa-trash"></i></button><input type="hidden" name="orderid" value="' . htmlspecialchars($row['orderid']) . '"></form>'; ?></td>
-                    </tr>
+                    <?php while ($row = $q->fetch()): ?>
+                        <tr>
+                            <td><?php echo html_entity_decode($row['orderid']); ?></td>
+                            <td class="id-row"><?php echo html_entity_decode($row['customerid']); ?></td>
+                            <td class="id-row"><?php echo html_entity_decode($row['restaurantid']) ?></td>
+                            <td><?php echo html_entity_decode($row['street']); ?></td>
+                            <td><?php echo html_entity_decode($row['zipcode']); ?></td>
+                            <td><?php echo html_entity_decode($row['phone_number']); ?></td>
+                            <td><?php echo html_entity_decode($row['orderstatus']) ? "Complete" : "In Progress"; ?></td>
+                            <td class="complete-row"><?php echo '<form action="/set_order_as_complete.php" method="post"><button type="submit"><i class="fa fa-check-square"></i></button><input type="hidden" name="orderid" value="' . htmlspecialchars($row['orderid']) . '"></form>'; ?></td>
+                            <td class="remove-row"><?php echo '<form action="/delete_order.php" method="post"><button type="submit"><i class="fa fa-trash"></i></button><input type="hidden" name="orderid" value="' . htmlspecialchars($row['orderid']) . '"></form>'; ?></td>
+                        </tr>
+                    <?php endwhile; ?>
                 </table>
             </div>
 
             <!-- add to db -->
             <div class="add-to-db">
-                <form action="/action_page.php">
+                <form action="/insert_order.php" method="post">
                     <table>
                         <tr>
                             <td>
-                                Name:
+                                Customer ID:
                             </td>
                             <td>
-                                <input type="text" name="Name">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Type:
-                            </td>
-                            <td>
-                                <input type="text" name="Type">
+                                <input type="text" name="customerid">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Address:
+                                Restaurant ID:
                             </td>
                             <td>
-                                <input type="text" name="Address">
+                                <input type="text" name="restaurantid">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Street:
+                            </td>
+                            <td>
+                                <input type="text" name="street">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Zipcode:
+                            </td>
+                            <td>
+                                <input type="text" name="zipcode">
                             </td>
                         </tr>
                         <tr>
@@ -90,7 +122,18 @@
                                 Phone Number:
                             </td>
                             <td>
-                                <input type="text" name="Phone">
+                                <input type="text" name="phone_number">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Order Status:
+                            </td>
+                            <td>
+                                <select name="orderstatus">
+                                    <option value="0">In Progress</option>
+                                    <option value="1">Complete</option>
+                                </select>
                             </td>
                         </tr>
                     </table>
