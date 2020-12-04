@@ -52,16 +52,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="card-row">
-                <!-- Employees Card -->
-                <div class="card" onclick="location.href='/employees.php';">
-                    <img src="https://www.flaticon.com/svg/static/icons/svg/912/912318.svg">
-                    <div class="container">
-                        <h4><b>Employees</b></h4>
-                    </div>
-                </div>
-            </div>
         </div>
     </body>
 </html>
