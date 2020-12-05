@@ -43,11 +43,11 @@ try {
 
             <!-- Search Bar -->
             <div class="search-container" id="menu-item-search-container">
-                <form action="/search_menu.php">
+                <form action="/search_menu.php" method="post">
                     <select name="search_type" id="search_type">
                         <option value="restaurantid">Restaurant ID</option>
                     </select>
-                    <input type="text" placeholder="Search.." name="search">
+                    <input type="text" placeholder="Search.." name="search_query">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
