@@ -64,6 +64,7 @@ try {
                         <th>Order Status</th>
                         <th class="complete-row">Mark as Complete</th>
                         <th class="remove-row">Delete Order</th>
+                        <th class="report-row">Generate Report</th>
                     </tr>
                     <?php while ($row = $q->fetch()): ?>
                         <tr>
@@ -76,6 +77,7 @@ try {
                             <td><?php echo html_entity_decode($row['orderstatus']) ? "Complete" : "In Progress"; ?></td>
                             <td class="complete-row"><?php echo '<form action="/set_order_as_complete.php" method="post"><button type="submit"><i class="fa fa-check-square"></i></button><input type="hidden" name="orderid" value="' . htmlspecialchars($row['orderid']) . '"></form>'; ?></td>
                             <td class="remove-row"><?php echo '<form action="/delete_order.php" method="post"><button type="submit"><i class="fa fa-trash"></i></button><input type="hidden" name="orderid" value="' . htmlspecialchars($row['orderid']) . '"></form>'; ?></td>
+                            <td class="report-row"><?php echo '<form action="/order_report.php" method="post"><button type="submit"><i class="fa fa-info-circle"></i></button><input type="hidden" name="orderid" value="' . htmlspecialchars($row['orderid']) . '"></form>'; ?></td>
                         </tr>
                     <?php endwhile; ?>
                 </table>
