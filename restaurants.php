@@ -64,6 +64,7 @@ try {
                         <th>Zipcode</th>
                         <th>Phone Number</th>
                         <th class="remove-row">Remove</th>
+                        <th class="report-row">Sales Report</th>
                     </tr>
                     <?php while ($row = $q->fetch()): ?>
                         <tr>
@@ -74,6 +75,7 @@ try {
                             <td><?php echo html_entity_decode($row['zipcode']); ?></td>
                             <td><?php echo html_entity_decode($row['phone_number']); ?></td>
                             <td class="remove-row"><?php echo '<form action="/delete_restaurant.php" method="post"><button type="submit"><i class="fa fa-trash"></i></button><input type="hidden" name="restaurantid" value="' . htmlspecialchars($row['restaurantid']) . '"><input type="hidden" name="rname" value="' . htmlspecialchars($row['rname']) . '"></form>'; ?></td>
+                            <td class="report-row"><?php echo '<form action="/restaurant_report.php" method="post"><button type="submit"><i class="fa fa-info-circle"></i></button><input type="hidden" name="restaurantid" value="' . htmlspecialchars($row['restaurantid']) . '"></form>'; ?></td>
                         </tr>
                     <?php endwhile; ?>
                 </table>
