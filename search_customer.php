@@ -10,8 +10,11 @@ $host = 'localhost';
 $dbname = 'restaurants';
 
 try {
+    $search_type = $_POST["search_type"];
+	$search_query = htmlentities($_POST["search_query"], ENT_QUOTES);
+
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $sql = "SELECT * FROM Customers";
+    $sql = "SELECT * FROM Customers WHERE $search_type LIKE '%$search_query%'";
     $q = $pdo->query($sql);
     $q->setFetchMode(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -21,7 +24,7 @@ try {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>RMS | Customers</title>
+        <title>RMS | Search Customers</title>
 
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,15 +42,15 @@ try {
         <div class="main">
 
             <!-- Title -->
-            <h2>Customers</h2>
+            <?php echo "<h2>Customers with Customer ID: " . $search_query . "</h2>" ; ?>
 
             <!-- Search Bar -->
             <div class="search-container" id="customer-search-container">
-                <form action="/search_customer.php" method="post">
+                <form action="/search_customer.php">
                     <select name="search_type" id="search_type">
-                        <option value="customerid">Customer ID</option>
+                        <option value="restaurantid">Restaurant ID</option>
                     </select>
-                    <input type="text" placeholder="Search.." name="search_query">
+                    <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
